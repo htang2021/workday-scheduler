@@ -19,6 +19,7 @@ textarea{
   color: black;
   border-radius: 0;
   border-bottom: 7px solid black;
+  padding: 30px;
 }
 
 .description{
@@ -68,4 +69,23 @@ textarea{
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+/*  From here and on */
+.row {
+  border-bottom: 5px solid red;
+}
+.row div {
+  border: 1px solid blue;
+}
+.footer-area {
+  font-weight: bolder;
+  font-size: larger;
+  margin: 30px 0 50px;
+  border: 1px solid brown;
+}
+footer div {
+  text-align: center;
+}
+#hourly-div {
+  border-left: none;
 }
