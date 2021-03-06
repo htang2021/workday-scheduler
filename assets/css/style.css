@@ -11,6 +11,8 @@ textarea{
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  /*background-color: cadetblue;
+  width: 100%; */
 }
 
 .jumbotron {
@@ -35,6 +37,7 @@ textarea{
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
+  /*background-color: cadetblue;  I added this one */
 }
 
 .hour {
@@ -65,18 +68,25 @@ textarea{
   background-color: #06AED5;
   color: white;
 }
+/* I added this def below */
+.saveBtn i {
+  font-size: 26px;
+  text-align: center;
+  vertical-align: middle;
+}
+/* Above is what I added */
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 30px;
   transition: all .3s ease-in-out;
 }
 /*  From here and on */
-.row {
+/*.row {
   border-bottom: 5px solid red;
 }
 .row div {
   border: 1px solid blue;
-}
+} */
 .footer-area {
   font-weight: bolder;
   font-size: larger;
