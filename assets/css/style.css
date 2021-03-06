@@ -4,6 +4,16 @@ body {
   line-height: 1;
 }
 
+main {
+  background-color: moccasin;
+  padding: 30px;
+  margin: 50px;
+}
+
+.container {
+  background-color: mediumpurple;
+  padding: 50px;
+}
 textarea{
   background: transparent;
   border: none;
@@ -11,8 +21,8 @@ textarea{
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
-  /*background-color: cadetblue;
-  width: 100%; */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .jumbotron {
@@ -44,6 +54,7 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  text-align: center;
 }
 
 .past {
