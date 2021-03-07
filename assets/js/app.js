@@ -56,8 +56,8 @@ $( document ).ready(function() {
         var showTime = showHour(i);
 
         timeCol.push(`<div class="col mb-1 hour" id="hour-${i}">${showTime}</div>`);
-        tasksCol.push(`<div class="col-10 mb-1 description" id="taskInput-${i}"></div>`);
-        saveCol.push(`<div class="col mb-1 saveBtn" id="saveBtn-${i}"></div>`);
+        tasksCol.push(`<div class="col-12 col-md-10 mb-1 description" id="taskInput-${i}"></div>`);
+        saveCol.push(`<div class="col-sm-12 col-md mb-1 saveBtn" id="saveBtn-${i}"></div>`);
 
         $(".row-hour"+i).append(timeCol[i-8]);
         $(".row-hour"+i).append(tasksCol[i-8]);
@@ -130,9 +130,7 @@ $( document ).ready(function() {
         });
     }
 
-    // Call when page refreshes
+    // Call function update page with what's in localStorage
     loadSchedule();
 
-    // Reload page every 15 minutes
-    setInterval(loadSchedule, 1000*60*15);
 });
