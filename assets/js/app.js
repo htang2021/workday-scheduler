@@ -7,7 +7,7 @@ $( document ).ready(function() {
     const future = "future";
     
     //Initializing an object array to store the hours and the respective tasks
-    const workdayScheduleObj = [];
+    var workdayScheduleObj = [];
 
     //var timeBlockContainer = document.querySelector(".container");
     let timeBlockContainer = $('.container');
@@ -77,6 +77,8 @@ $( document ).ready(function() {
     // Retrieve the storage object
     var getScheduleObj = () => {
         scheduleObj = JSON.parse(localStorage.getItem("schedule"));
+        console.log("HelloThere - ");
+        console.log(scheduleObj);
     }
 
     // Place object values into the scheduler
@@ -85,14 +87,27 @@ $( document ).ready(function() {
         getScheduleObj();
 
         // Write 
-        $.each(scheduleObj, function (arrayIndex, value) {
-            document.getElementById(`text-${arrayIndex+8}`).innerHTML = value.text;
+        $.each(workdayScheduleObj, function (arrayIndex, value) {
+            if (!this.plan) {
+                console.log("no data");
+            } else {
+                console.log(arrayIndex+8 + " " + this.plan);
+                document.getElementById(`text-${arrayIndex+8}`).innerHTML = this.plan;
+            }
         });  
     }
     
     // Write object array to localStorage
-    var saveSchedule = () => {
+    var saveSchedule = (workdayScheduleObj) => {
+        // console.log(`${i} is ${typeof(textInput)} and is ${textInput}`);
+        // getScheduleObj();
+        console.log("workday #3 below");
+        console.log(workdayScheduleObj);
+        // scheduleObj[i-8] = {"time":i, "plan":textInput};
+        // console.log(scheduleObj);
         localStorage.setItem("schedule", JSON.stringify(workdayScheduleObj));
+        console.log("workday #4 below");
+        console.log(workdayScheduleObj);
     }
 
     // Listen for save button click and write object to array
@@ -100,12 +115,18 @@ $( document ).ready(function() {
     for (let i=8; i <= 17; i++) {
 
         $("#saveBtn-"+i).click(function () {
+
             console.log(`Button ${i} has been pushed`);
 
             var textInput = $(`textarea#text-${i}`).val();
-            workdayScheduleObj[i-8] = {"time":i, "text":textInput};
+            workdayScheduleObj[i-8] = {"time":i, "plan":textInput};
+
+            console.log(JSON.stringify(workdayScheduleObj));
+            console.log("workday is on top of me");
  
-            saveSchedule();
+            saveSchedule(workdayScheduleObj);
+            console.log("workday#2 and below");
+            console.log(workdayScheduleObj);
         });
     }
 
