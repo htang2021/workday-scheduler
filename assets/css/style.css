@@ -4,16 +4,18 @@ body {
   line-height: 1;
 }
 
+
 main {
   background-color: moccasin;
-  padding: 30px;
-  margin: 50px;
-}
+  padding: 10px;
+  margin: 0 50px;
+} 
 
 .container {
-  background-color: mediumpurple;
+  /*background-color: mediumpurple; */
   padding: 50px;
-}
+} 
+
 textarea{
   background: transparent;
   border: none;
@@ -54,7 +56,7 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  text-align: center;
+  text-align: right;
 }
 
 .past {
@@ -82,27 +84,24 @@ textarea{
 /* I added this def below */
 .saveBtn i {
   font-size: 26px;
-  text-align: center;
-  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /* Above is what I added */
 
 .saveBtn i:hover {
-  font-size: 30px;
+  font-size: 40px;
   transition: all .3s ease-in-out;
 }
-/*  From here and on */
-/*.row {
-  border-bottom: 5px solid red;
-}
-.row div {
-  border: 1px solid blue;
-} */
+
 .footer-area {
   font-weight: bolder;
   font-size: larger;
-  margin: 30px 0 50px;
-  border: 1px solid brown;
+  margin: 0 50px 50px;
+  padding: 40px 0;
+  background-color: lightsteelblue;
 }
 footer div {
   text-align: center;
