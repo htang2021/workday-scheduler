@@ -1,3 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Baseline CSS defs mostly remains */
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -11,8 +19,7 @@ main {
 } 
 
 .container {
-  /*background-color: mediumpurple; */
-  padding: 50px;
+  padding: 30px;
 } 
 
 textarea{
@@ -24,6 +31,7 @@ textarea{
   padding: 10px;
   min-width: 100%;
   min-height: 100%;
+  font-size: medium;
 }
 
 .jumbotron {
@@ -36,19 +44,17 @@ textarea{
 }
 
 .description{
-  white-space: pre-wrap;
-}
-
-.time-block{
-  text-align: center;
-  border-radius: 15px;
+  white-space: pre-wrap; 
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
-  /*background-color: cadetblue;  I added this one */
+  border-top: 1px solid white;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .hour {
@@ -66,7 +72,7 @@ textarea{
 .present {
   background-color: #ff6961;
   color: white;
-  font-weight: bolder;
+  font-weight: bold;
   font-size: large;
 }
 
@@ -74,7 +80,7 @@ textarea{
   background-color: #77dd77;
   color: black;
   font-size: larger;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .saveBtn {
@@ -83,8 +89,9 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  min-height: 50px;
 }
-/* I added this def below */
+/* saveBtn sizing and positioning */
 .saveBtn i {
   font-size: 26px;
   position: absolute;
@@ -92,17 +99,17 @@ textarea{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/* Above is what I added */
 
 .saveBtn i:hover {
   font-size: 40px;
   transition: all .3s ease-in-out;
 }
 
+/* Footer area css settings */
 .footer-area {
   font-weight: bolder;
   font-size: larger;
-  margin: 0 50px 50px;
+  margin: 10px 50px 50px;
   padding: 40px 0;
   background-color: lightsteelblue;
 }
