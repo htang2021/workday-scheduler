@@ -1,3 +1,7 @@
+// Assumptions:
+// 1. Regular business hours span from 8AM to 5PM
+// 2. Time is based on system local time
+
 // Wait till DOM ready ****************
 $( document ).ready(function() {
 
@@ -74,40 +78,43 @@ $( document ).ready(function() {
     }
 
     var scheduleObj;
-    // Retrieve the storage object
+    // Retrieve local storage if not null
     var getScheduleObj = () => {
-        scheduleObj = JSON.parse(localStorage.getItem("schedule"));
-        console.log("HelloThere - ");
-        console.log(scheduleObj);
+        if (localStorage) {
+            scheduleObj = JSON.parse(localStorage.getItem("schedule"));
+        } 
     }
 
     // Place object values into the scheduler
     var loadSchedule = () => {
 
+        // Call function to retrieve parsed objects array from localStorage
         getScheduleObj();
 
-        // Write 
-        $.each(workdayScheduleObj, function (arrayIndex, value) {
-            if (!this.plan) {
-                console.log("no data");
-            } else {
-                console.log(arrayIndex+8 + " " + this.plan);
+        // Write parsed objects into HTML elements based on index
+        $.each(scheduleObj, function (arrayIndex, value) {
                 document.getElementById(`text-${arrayIndex+8}`).innerHTML = this.plan;
-            }
         });  
     }
     
     // Write object array to localStorage
-    var saveSchedule = (workdayScheduleObj) => {
-        // console.log(`${i} is ${typeof(textInput)} and is ${textInput}`);
-        // getScheduleObj();
-        console.log("workday #3 below");
-        console.log(workdayScheduleObj);
-        // scheduleObj[i-8] = {"time":i, "plan":textInput};
-        // console.log(scheduleObj);
-        localStorage.setItem("schedule", JSON.stringify(workdayScheduleObj));
-        console.log("workday #4 below");
-        console.log(workdayScheduleObj);
+    var saveSchedule = (i, workdayScheduleObj) => {
+
+        var savedObj = JSON.parse(localStorage.getItem("schedule"));
+        if (!savedObj) savedObj = []; //initialize if object is null
+
+        savedObj[i-8] = JSON.parse(workdayScheduleObj[i-8]);
+ 
+        // initialize objects that are null with blank space
+        for (let i=8; i<= 17; i++) {
+            if (!savedObj[i-8]) {
+                savedObj[i-8] = {"time": i, "plan": " "};
+            } 
+        }
+        
+        // save the whole ojbect array into storage
+        localStorage.setItem("schedule", JSON.stringify(savedObj));
+
     }
 
     // Listen for save button click and write object to array
@@ -116,20 +123,16 @@ $( document ).ready(function() {
 
         $("#saveBtn-"+i).click(function () {
 
-            console.log(`Button ${i} has been pushed`);
-
             var textInput = $(`textarea#text-${i}`).val();
-            workdayScheduleObj[i-8] = {"time":i, "plan":textInput};
+            workdayScheduleObj[i-8] = JSON.stringify({"time":i, "plan":textInput});
 
-            console.log(JSON.stringify(workdayScheduleObj));
-            console.log("workday is on top of me");
- 
-            saveSchedule(workdayScheduleObj);
-            console.log("workday#2 and below");
-            console.log(workdayScheduleObj);
+            saveSchedule(i, workdayScheduleObj);
         });
     }
 
+    // Call when page refreshes
     loadSchedule();
 
+    // Reload page every 15 minutes
+    setInterval(loadSchedule, 1000*60*15);
 });
