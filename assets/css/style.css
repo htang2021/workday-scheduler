@@ -4,6 +4,17 @@ body {
   line-height: 1;
 }
 
+/* Added main section container */
+main {
+  padding: 10px;
+  margin: 0 50px;
+} 
+
+.container {
+  /*background-color: mediumpurple; */
+  padding: 50px;
+} 
+
 textarea{
   background: transparent;
   border: none;
@@ -11,6 +22,8 @@ textarea{
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .jumbotron {
@@ -18,7 +31,8 @@ textarea{
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 7px solid black;
+  padding: 30px;
 }
 
 .description{
@@ -34,27 +48,33 @@ textarea{
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
+  /*background-color: cadetblue;  I added this one */
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  text-align: right;
 }
 
 .past {
   background-color: #d3d3d3;
-  color: white;
+  color: black;
 }
 
 .present {
   background-color: #ff6961;
   color: white;
+  font-weight: bolder;
+  font-size: large;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color: black;
+  font-size: larger;
+  font-weight: bolder;
 }
 
 .saveBtn {
@@ -64,8 +84,31 @@ textarea{
   background-color: #06AED5;
   color: white;
 }
+/* I added this def below */
+.saveBtn i {
+  font-size: 26px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Above is what I added */
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 40px;
   transition: all .3s ease-in-out;
+}
+
+.footer-area {
+  font-weight: bolder;
+  font-size: larger;
+  margin: 0 50px 50px;
+  padding: 40px 0;
+  background-color: lightsteelblue;
+}
+footer div {
+  text-align: center;
+}
+#hourly-div {
+  border-left: none;
 }
