@@ -5,6 +5,9 @@ $( document ).ready(function() {
     const past = "past";
     const present = "present";
     const future = "future";
+    
+    //Initializing an object array to store the hours and the respective tasks
+    const workdayScheduleObj = [];
 
     //var timeBlockContainer = document.querySelector(".container");
     let timeBlockContainer = $('.container');
@@ -35,7 +38,7 @@ $( document ).ready(function() {
         }
     };
 
-    // code block to create each of the time/tasks/save columns per row-hour
+    // code block to create each of the time/tasks/saveBtn containers for all hourly rows
     var timeCol = [];
     var tasksCol = [];
     var saveCol = [];
@@ -47,6 +50,7 @@ $( document ).ready(function() {
 
         // Assign and call function to return hour in AM/PM
         var showTime = showHour(i);
+
         timeCol.push(`<div class="col mb-1 hour" id="hour-${i}">${showTime}</div>`);
         tasksCol.push(`<div class="col-10 mb-1 description" id="taskInput-${i}"></div>`);
         saveCol.push(`<div class="col mb-1 saveBtn" id="saveBtn-${i}"></div>`);
@@ -69,39 +73,42 @@ $( document ).ready(function() {
     
     }
 
-    var test = [];
-
-    // Listen for save button click and write object to array
-    for (let i=8; i <= 17; i++) {
-        $("#saveBtn-"+i).click(function () {
-            console.log(`Button ${i} has been pushed`);
-            var textInput = document.getElementById("#text-"+i).nodeValue;
-            console.log(textInput);
-        });
+    var scheduleObj;
+    // Retrieve the storage object
+    var getScheduleObj = () => {
+        scheduleObj = JSON.parse(localStorage.getItem("schedule"));
     }
 
-    // Write object to localStorage
-    var workdayScheduleObj = [
-        {
-        time: "9am",
-        task: "what I do at 9am"
-        },
-        {time: "10am",
-        task: "Eat breakfast"
-        }
-    ];
-    console.log(`${workdayScheduleObj[0].time}, rise and shine!  Time to do your ${workdayScheduleObj[1].task}.`);
+    // Place object values into the scheduler
+    var loadSchedule = () => {
 
+        getScheduleObj();
+
+        // Write 
+        $.each(scheduleObj, function (arrayIndex, value) {
+            document.getElementById(`text-${arrayIndex+8}`).innerHTML = value.text;
+        });  
+    }
+    
+    // Write object array to localStorage
     var saveSchedule = () => {
         localStorage.setItem("schedule", JSON.stringify(workdayScheduleObj));
     }
 
-    // write user input to a variable and put into an array object
-    // var taskToObj = function() {
-        
-    //     var taskInput = $("
+    // Listen for save button click and write object to array
+    // with index starting from 8 to map to 0800 hour in 24 hour format
+    for (let i=8; i <= 17; i++) {
 
-    // }
+        $("#saveBtn-"+i).click(function () {
+            console.log(`Button ${i} has been pushed`);
 
-    saveSchedule();
+            var textInput = $(`textarea#text-${i}`).val();
+            workdayScheduleObj[i-8] = {"time":i, "text":textInput};
+ 
+            saveSchedule();
+        });
+    }
+
+    loadSchedule();
+
 });
