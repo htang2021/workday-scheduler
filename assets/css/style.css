@@ -119,3 +119,55 @@ footer div {
 #hourly-div {
   border-left: none;
 }
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+@media screen and (max-width: 768px) {
+  main {
+    padding: 5px;
+    margin: 0 20px;
+  } 
+
+  .container {
+    padding: 10px;
+  } 
+
+  .row {
+    display:flex;
+    max-height: 50px;
+    flex-direction: column;
+    width: 100%;
+  }
+  .hour {
+    text-align: left;
+    /*height: 50px; */
+    /*flex-flow: column;*/
+    width: 10%;
+  }
+  .description {
+    width: 80%;
+    border-top: 1px dashed black;
+  }
+  .saveBtn {
+    /*flex-flow: column; */
+    /*flex-wrap: wrap; */
+    width: 10%;
+  }
+
+  .present {
+    font-weight: bold;
+    font-size: medium;
+  }
+  
+  .future {
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .footer-area {
+    font-weight: bolder;
+    font-size: larger;
+    margin: 10px 50px 20px;
+    padding: 10px 0;
+    background-color: lightsteelblue;
+  }
+}
